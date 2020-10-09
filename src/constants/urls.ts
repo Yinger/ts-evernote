@@ -1,0 +1,1 @@
+export const GET_NOTEBOOKS_URL = "http://localhost:3030/notebooks"

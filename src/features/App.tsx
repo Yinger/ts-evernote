@@ -1,17 +1,8 @@
 import React from "react";
-import "./App.scss";
-import NoteList from "./evernote/components/notelist";
-import SideBar from "./evernote/components/sidebar";
-import Note from "./evernote/components/note";
+import Evernote from "./evernote/index";
 
 function App() {
-  return (
-    <div className="app">
-      <SideBar></SideBar>
-      <NoteList></NoteList>
-      <Note></Note>
-    </div>
-  );
+  return <Evernote></Evernote>;
 }
 
 export default App;
