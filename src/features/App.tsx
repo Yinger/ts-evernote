@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.scss";
-import NoteList from "./evernote/notelist";
-import SideBar from "./evernote/sidebar";
-import Note from "./evernote/note";
+import NoteList from "./evernote/components/notelist";
+import SideBar from "./evernote/components/sidebar";
+import Note from "./evernote/components/note";
 
 function App() {
   return (
