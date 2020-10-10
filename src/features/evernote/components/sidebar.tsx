@@ -1,5 +1,4 @@
 import React from "react";
-import "../../App.scss";
 import { Notebook, NotebookResponse } from "../interface/notebook";
 
 interface Props {

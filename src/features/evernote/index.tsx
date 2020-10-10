@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { bindActionCreators, Dispatch } from "redux";
 import { connect } from "react-redux";
-import "./index.scss";
 import NoteList from "./components/notelist";
 import SideBar from "./components/sidebar";
 import Note from "./components/note";
 import { NotebookRequest, NotebookResponse } from "./interface/notebook";
 import { getNotebooks } from "./redux/actions";
+import "./index.scss";
 
 interface Props {
   onGetNotebooks(param: NotebookRequest): void;
@@ -41,7 +41,7 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
     {
       onGetNotebooks: getNotebooks,
     },
-    dispatch,
+    dispatch
   );
 
 export default connect(mapStateToProps, mapDispatchToProps)(Evernote);
