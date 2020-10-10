@@ -1,10 +1,13 @@
-import {NotebookResponse} from '../interface/notebook'
+import { NotebooksResponse } from "./notebook";
+import { NoteListResponse } from "./note";
 
 export type Action = {
-    type: string;
-    payload: any;
-  };
-  
-  export type State = Readonly<{
-    notebooks: NotebookResponse;
-  }>;
+  type: string;
+  payload: any;
+};
+
+export type State = Readonly<{
+  notebooks: NotebooksResponse;
+  bookId: number;
+  noteList: NoteListResponse;
+}>;

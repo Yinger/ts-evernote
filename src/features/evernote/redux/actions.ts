@@ -1,3 +1,2 @@
-import { getNotebooks } from "./getNotebooks";
-
 export { getNotebooks } from "./getNotebooks";
+export { getNoteList } from "./getNoteList";

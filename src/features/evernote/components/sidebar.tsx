@@ -1,11 +1,19 @@
 import React from "react";
-import { Notebook, NotebookResponse } from "../interface/notebook";
+import { NoteListRequest } from "../interface/note";
+import { Notebook, NotebooksResponse } from "../interface/notebook";
 
 interface Props {
-  notebooks: NotebookResponse;
+  getNotebook(param: NoteListRequest): void;
+  notebooks: NotebooksResponse;
+  currentNotebook: Notebook;
 }
 
 const SideBar = (props: Props) => {
+  const handleBookSelect = (bookId: number) => {
+    let param: NoteListRequest = { bookId: bookId };
+    props.getNotebook(param);
+  };
+
   return (
     <div className="sidebar">
       <div className="header">
@@ -23,8 +31,17 @@ const SideBar = (props: Props) => {
           <div className="body">
             <ul className="notebooks-list">
               {props.notebooks !== undefined
-                ? props.notebooks.map((notebook: Notebook, index: number) => (
-                    <li key={notebook.id} className={"notebook-item"}>
+                ? props.notebooks.map((notebook: Notebook) => (
+                    <li
+                      key={notebook.id}
+                      className={
+                        "notebook-item" +
+                        (props.currentNotebook.id === notebook.id
+                          ? " active"
+                          : "")
+                      }
+                      onClick={() => handleBookSelect(notebook.id)}
+                    >
                       <div className="title has-icon">
                         <i className="iconfont icon-book"></i>
                         {notebook.name}
