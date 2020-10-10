@@ -1,4 +1,4 @@
-export interface Note {
+export interface NoteInfo {
   id: number;
   title: string;
   body: string;
@@ -6,13 +6,13 @@ export interface Note {
   bookId: number;
 }
 
-export type NoteResponse = Note | undefined;
+export type NoteResponse = NoteInfo | undefined;
 
 export interface NoteRequest {
   Id?: number;
 }
 
-export type NoteListResponse = Note[] | undefined;
+export type NoteListResponse = NoteInfo[] | undefined;
 
 export interface NoteListRequest {
   bookId?: number;

@@ -9,16 +9,18 @@ import {
   NotebooksResponse,
   Notebook,
 } from "./interface/notebook";
-import { getNotebooks, getNoteList } from "./redux/actions";
+import { getNote, getNotebooks, getNoteList } from "./redux/actions";
 import "./index.scss";
-import { NoteListResponse, NoteListRequest } from "./interface/note";
+import { NoteListResponse, NoteListRequest, NoteInfo } from "./interface/note";
 
 interface Props {
   onGetNotebooks(param: NotebooksRequest): void;
   onGetNoteList(param: NoteListRequest): void;
+  onGetNote(id: number): void;
   notebooks: NotebooksResponse;
   currentNotebook: Notebook;
   noteList: NoteListResponse;
+  note: NoteInfo;
 }
 
 const Evernote = (props: Props) => {
@@ -30,12 +32,17 @@ const Evernote = (props: Props) => {
     props.onGetNoteList(param);
   };
 
+  const getNote = (id: number) => {
+    props.onGetNote(id);
+  };
+
   useEffect(
     () => {
       let paramBook: NotebooksRequest = {};
       let paramNoteList: NoteListRequest = { bookId: -1 };
       getNotebooks(paramBook);
       getNoteList(paramNoteList);
+      getNote(-1);
     },
     // eslint-disable-next-line
     []
@@ -47,12 +54,14 @@ const Evernote = (props: Props) => {
         notebooks={props.notebooks}
         currentNotebook={props.currentNotebook}
         getNotebook={props.onGetNoteList}
-      ></SideBar>
+      />
       <NoteList
         noteList={props.noteList}
         currentNotebook={props.currentNotebook}
-      ></NoteList>
-      <Note></Note>
+        note={props.note}
+        handleEditNote={props.onGetNote}
+      />
+      <Note currentNotebook={props.currentNotebook} note={props.note} />
     </div>
   );
 };
@@ -60,8 +69,8 @@ const Evernote = (props: Props) => {
 const mapStateToProps = (state: any) => ({
   notebooks: state.evernote.notebooks,
   currentNotebook: state.evernote.currentNotebook,
-  bookId: state.evernote.bookId,
   noteList: state.evernote.noteList,
+  note: state.evernote.note,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
@@ -69,6 +78,7 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
     {
       onGetNotebooks: getNotebooks,
       onGetNoteList: getNoteList,
+      onGetNote: getNote,
     },
     dispatch
   );

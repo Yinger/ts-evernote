@@ -51,6 +51,10 @@ export function reducer(state: State, action: Action) {
         ...state,
         noteList: noteList,
         currentNotebook: newCurrentNotebook,
+        note:
+          noteList !== undefined && noteList.length > 0
+            ? noteList[0]
+            : undefined,
       };
 
     default:

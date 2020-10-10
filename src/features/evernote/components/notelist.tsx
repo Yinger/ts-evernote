@@ -1,10 +1,14 @@
 import React from "react";
-import { NoteListResponse, Note } from "../interface/note";
+import { NoteListResponse, NoteInfo } from "../interface/note";
 import { Notebook } from "../interface/notebook";
+import cx from "classnames";
 
 interface Props {
+  handleEditNote(id: number): void;
+  // onGetNote(id: number): void;
   noteList: NoteListResponse;
   currentNotebook: Notebook;
+  note: NoteInfo;
 }
 
 const NoteList = (props: Props) => {
@@ -16,10 +20,20 @@ const NoteList = (props: Props) => {
       <div className="body">
         <ul className="notes-list">
           {props.noteList !== undefined
-            ? props.noteList.map((note: Note, index: number) => (
+            ? props.noteList.map((note: NoteInfo, index: number) => (
                 <li key={note.id}>
-                  <div className={"note-brief"}>
-                    <div className="box">
+                  <div
+                    className={cx("note-brief", {
+                      active:
+                        props.note !== undefined && props.note.id === note.id,
+                    })}
+                  >
+                    <div
+                      className="box"
+                      onClick={() => {
+                        props.handleEditNote(note.id);
+                      }}
+                    >
                       <div className="header">{note.title}</div>
                       <div className="body">{note.body}</div>
                     </div>
