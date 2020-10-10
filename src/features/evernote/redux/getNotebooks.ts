@@ -28,7 +28,7 @@ export function reducer(state: State, action: Action) {
       return {
         ...state,
         notebooks: notebooks,
-        bookId: bookId,
+        // bookId: bookId,
         currentNotebook: bookId === -1 ? undefined : action.payload[0],
       };
 

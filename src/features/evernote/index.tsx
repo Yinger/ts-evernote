@@ -11,18 +11,13 @@ import {
 } from "./interface/notebook";
 import { getNotebooks, getNoteList } from "./redux/actions";
 import "./index.scss";
-import {
-  NoteListResponse,
-  // NoteResponse,
-  NoteListRequest,
-} from "./interface/note";
+import { NoteListResponse, NoteListRequest } from "./interface/note";
 
 interface Props {
   onGetNotebooks(param: NotebooksRequest): void;
   onGetNoteList(param: NoteListRequest): void;
   notebooks: NotebooksResponse;
   currentNotebook: Notebook;
-  bookId: number;
   noteList: NoteListResponse;
 }
 
@@ -37,10 +32,10 @@ const Evernote = (props: Props) => {
 
   useEffect(
     () => {
-      let param: NotebooksRequest = {};
-      let param2: NoteListRequest = { bookId: props.bookId };
-      getNotebooks(param);
-      getNoteList(param2);
+      let paramBook: NotebooksRequest = {};
+      let paramNoteList: NoteListRequest = { bookId: -1 };
+      getNotebooks(paramBook);
+      getNoteList(paramNoteList);
     },
     // eslint-disable-next-line
     []
