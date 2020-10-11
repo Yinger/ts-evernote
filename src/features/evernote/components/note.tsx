@@ -7,30 +7,18 @@ import "github-markdown-css";
 interface Props {
   currentNotebook: Notebook;
   note: NoteInfo;
-  // getNote(id: number): void;
 }
 const Note = (props: Props) => {
   console.log(props.note !== undefined ? props.note.title : "");
-  const [title, setTitle] = useState(
-    props.note !== undefined ? props.note.title : ""
-  );
+  const [title, setTitle] = useState("");
 
   const handleTitleChange = (e: React.FormEvent<HTMLInputElement>) => {
     setTitle(e.currentTarget.value);
   };
 
-  // const getNote = (id: number) => {
-  //   props.getNote(id);
-  // };
-
-  useEffect(
-    () => {
-      // getNote(-1);
-      setTitle(props.note !== undefined ? props.note.title : "");
-    },
-    // eslint-disable-next-line
-    []
-  );
+  useEffect(() => {
+    setTitle(props.note !== undefined ? props.note.title : "");
+  }, [props.note]);
   return (
     <div className="note-panel">
       <div className="header">
@@ -43,8 +31,7 @@ const Note = (props: Props) => {
         <div className="title">
           <input
             type="text"
-            value={props.note !== undefined ? props.note.title : ""}
-            // value={title}
+            value={title !== undefined ? title : ""}
             name="title"
             onChange={handleTitleChange}
           />

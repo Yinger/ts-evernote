@@ -24,12 +24,10 @@ export function getNote(id: number) {
         }
       });
     }
-    // else {
     dispatch({
       type: GET_NOTE,
       payload: { id: id },
     });
-    // }
   };
 }
 
@@ -46,13 +44,6 @@ export function reducer(state: State, action: Action) {
         if (noteList !== undefined) {
           let id = action.payload.id;
           let index = -1;
-          // if (
-          //   action.payload === -1 &&
-          //   noteList !== undefined &&
-          //   noteList.length > 0
-          // ) {
-          //   id = noteList[0].id;
-          // }
 
           index = _.findIndex(noteList, {
             id: id,
@@ -62,26 +53,6 @@ export function reducer(state: State, action: Action) {
           }
         }
       }
-      // if (action.payload)
-      //   if (state.noteList !== undefined) {
-      //     noteList = [...(state.noteList as NoteInfo[])];
-      //     let id = action.payload;
-      //     let index = -1;
-      //     if (
-      //       action.payload === -1 &&
-      //       noteList !== undefined &&
-      //       noteList.length > 0
-      //     ) {
-      //       id = noteList[0].id;
-      //     }
-
-      //     index = _.findIndex(noteList, {
-      //       id: id,
-      //     });
-      //     if (index !== -1) {
-      //       noteInfo = noteList[index];
-      //     }
-      //   }
       return {
         ...state,
         note: noteInfo,

@@ -24,28 +24,17 @@ interface Props {
 }
 
 const Evernote = (props: Props) => {
-  const getNotebooks = (param: NotebooksRequest) => {
+  const gettNotebooks = (param: NotebooksRequest) => {
     props.onGetNotebooks(param);
   };
-
-  // const getNoteList = (param: NoteListRequest) => {
-  //   props.onGetNoteList(param);
-  // };
-
-  // const getNote = (id: number) => {
-  //   props.onGetNote(id);
-  // };
 
   useEffect(
     () => {
       let paramBook: NotebooksRequest = {};
-      // let paramNoteList: NoteListRequest = { bookId: -1 };
-      getNotebooks(paramBook);
-      // getNoteList(paramNoteList);
-      // getNote(-1);
+      gettNotebooks(paramBook);
     },
     // eslint-disable-next-line
-    []
+    [],
   );
 
   return (
@@ -61,11 +50,7 @@ const Evernote = (props: Props) => {
         note={props.note}
         handleEditNote={props.onGetNote}
       />
-      <Note
-        currentNotebook={props.currentNotebook}
-        note={props.note}
-        // getNote={getNote}
-      />
+      <Note currentNotebook={props.currentNotebook} note={props.note} />
     </div>
   );
 };
@@ -84,7 +69,7 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
       onGetNoteList: getNoteList,
       onGetNote: getNote,
     },
-    dispatch
+    dispatch,
   );
 
 export default connect(mapStateToProps, mapDispatchToProps)(Evernote);
