@@ -14,6 +14,7 @@ import {
   getNotebooks,
   getNoteList,
   updateNote,
+  createNote,
 } from "./redux/actions";
 import "./index.scss";
 import {
@@ -21,6 +22,7 @@ import {
   NoteListRequest,
   NoteInfo,
   UpdateNoteRequest,
+  CreateNoteRequest,
 } from "./interface/note";
 
 interface Props {
@@ -28,6 +30,7 @@ interface Props {
   onGetNoteList(param: NoteListRequest): void;
   onGetNote(id: number): void;
   onUpdateNote(param: UpdateNoteRequest): void;
+  onCreateNote(param: CreateNoteRequest): void;
   notebooks: NotebooksResponse;
   currentNotebook: Notebook;
   noteList: NoteListResponse;
@@ -54,6 +57,7 @@ const Evernote = (props: Props) => {
         notebooks={props.notebooks}
         currentNotebook={props.currentNotebook}
         getNotebook={props.onGetNoteList}
+        createNote={props.onCreateNote}
       />
       <NoteList
         noteList={props.noteList}
@@ -84,6 +88,7 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
       onGetNoteList: getNoteList,
       onGetNote: getNote,
       onUpdateNote: updateNote,
+      onCreateNote: createNote,
     },
     dispatch,
   );

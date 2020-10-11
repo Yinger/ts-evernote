@@ -1,9 +1,11 @@
 import React from "react";
-import { NoteListRequest } from "../interface/note";
+import { NoteListRequest, CreateNoteRequest } from "../interface/note";
 import { Notebook, NotebooksResponse } from "../interface/notebook";
+import moment from "moment";
 
 interface Props {
   getNotebook(param: NoteListRequest): void;
+  createNote(param: CreateNoteRequest): void;
   notebooks: NotebooksResponse;
   currentNotebook: Notebook;
 }
@@ -14,10 +16,20 @@ const SideBar = (props: Props) => {
     props.getNotebook(param);
   };
 
+  const handleNoteCreate = () => {
+    let param: CreateNoteRequest = {
+      title: "新建笔记",
+      body: "",
+      datetime: moment().format("DD/MM/YYYY HH:mm:ss"),
+      bookId: props.currentNotebook.id,
+    };
+    props.createNote(param);
+  };
+
   return (
     <div className="sidebar">
       <div className="header">
-        <button className="button adder">
+        <button className="button adder" onClick={handleNoteCreate}>
           <i className="iconfont icon-add"></i>
           新建笔记
         </button>

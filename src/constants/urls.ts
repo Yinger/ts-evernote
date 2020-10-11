@@ -4,3 +4,4 @@ export const GET_NOTELIST_URL = "api/evernote/notes";
 //TODO:http-proxy-middleware not work when post&put
 const targetUrl = "http://localhost:3030/";
 export const UPDATE_NOTE_URL = targetUrl + "notes";
+export const CREATE_NOTE_URL = targetUrl + "notes";

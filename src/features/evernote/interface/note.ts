@@ -25,3 +25,10 @@ export interface UpdateNoteRequest {
   datetime: string;
   bookId: number;
 }
+
+export interface CreateNoteRequest {
+  title: string;
+  body: string;
+  datetime: string;
+  bookId: number;
+}
