@@ -8,6 +8,5 @@ export type Action = {
 
 export type State = Readonly<{
   notebooks: NotebooksResponse;
-  bookId: number;
   noteList: NoteListResponse;
 }>;

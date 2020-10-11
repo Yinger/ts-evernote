@@ -1,16 +1,17 @@
 import { reducer as getNotebooksReducer } from "./getNotebooks";
 import { reducer as getNoteListReducer } from "./getNoteList";
 import { reducer as getNoteReducer } from "./getNote";
+import { reducer as updateNoteReducer } from "./updateNote";
 import { State, Action } from "../interface/types";
 import {
   GET_NOTEBOOKS,
   GET_NOTELIST,
   GET_NOTE,
+  UPDATE_NOTE,
 } from "../../../constants/actions";
 
 const initialState: State = {
   notebooks: undefined,
-  bookId: -1,
   noteList: undefined,
 };
 
@@ -22,6 +23,8 @@ export default function reducer(state = initialState, action: Action) {
       return getNoteListReducer(state, action);
     case GET_NOTE:
       return getNoteReducer(state, action);
+    case UPDATE_NOTE:
+      return updateNoteReducer(state, action);
     default:
       return { ...state };
   }

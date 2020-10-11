@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NoteInfo } from "../interface/note";
+import { NoteInfo, UpdateNoteRequest } from "../interface/note";
 import { Notebook } from "../interface/notebook";
 import marked from "marked";
 import "github-markdown-css";
@@ -7,6 +7,7 @@ import "github-markdown-css";
 interface Props {
   currentNotebook: Notebook;
   note: NoteInfo;
+  onChangeSave(param: UpdateNoteRequest): void;
 }
 const Note = (props: Props) => {
   console.log(props.note !== undefined ? props.note.title : "");
@@ -14,11 +15,15 @@ const Note = (props: Props) => {
 
   const handleTitleChange = (e: React.FormEvent<HTMLInputElement>) => {
     setTitle(e.currentTarget.value);
+    let newnote = props.note;
+    newnote.title = e.currentTarget.value;
+    props.onChangeSave(newnote);
   };
 
   useEffect(() => {
     setTitle(props.note !== undefined ? props.note.title : "");
   }, [props.note]);
+
   return (
     <div className="note-panel">
       <div className="header">

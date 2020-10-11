@@ -10,7 +10,7 @@ axios.interceptors.response.use(
   },
   function (error) {
     return Promise.reject(error);
-  }
+  },
 );
 
 export function get(url: string, data: any) {
@@ -27,6 +27,16 @@ export function post(url: string, data: any) {
     url,
     data,
   });
+}
+
+export function put(url: string, data: any) {
+  // console.log(data);
+  return axios({
+    method: "put",
+    url,
+    data,
+  });
+  // return axios.put(url, data);
 }
 
 export default axios;
