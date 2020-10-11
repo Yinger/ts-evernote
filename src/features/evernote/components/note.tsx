@@ -10,8 +10,8 @@ interface Props {
   onChangeSave(param: UpdateNoteRequest): void;
 }
 const Note = (props: Props) => {
-  console.log(props.note !== undefined ? props.note.title : "");
   const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
 
   const handleTitleChange = (e: React.FormEvent<HTMLInputElement>) => {
     setTitle(e.currentTarget.value);
@@ -20,8 +20,16 @@ const Note = (props: Props) => {
     props.onChangeSave(newnote);
   };
 
+  const handleBodyChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setBody(e.currentTarget.value);
+    let newnote = props.note;
+    newnote.body = e.currentTarget.value;
+    props.onChangeSave(newnote);
+  };
+
   useEffect(() => {
     setTitle(props.note !== undefined ? props.note.title : "");
+    setBody(props.note !== undefined ? props.note.body : "");
   }, [props.note]);
 
   return (
@@ -46,7 +54,8 @@ const Note = (props: Props) => {
         <div className="editor">
           <textarea
             name="body"
-            value={props.note !== undefined ? props.note.body : ""}
+            value={body !== undefined ? body : ""}
+            onChange={handleBodyChange}
           ></textarea>
         </div>
         <div className="preview markdown-body">
