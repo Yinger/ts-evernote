@@ -1,11 +1,11 @@
 import { Dispatch } from "redux";
 import _ from "lodash";
-import { get } from "../../../utils/request";
-import { GET_NOTELIST_URL } from "../../../constants/urls";
-import { GET_NOTELIST } from "../../../constants/actions";
-import { State, Action } from "../interface/types";
-import { Notebook } from "../interface/notebook";
-import { NoteListResponse } from "../interface/note";
+import { get } from "../../../../utils/request";
+import { GET_NOTELIST_URL } from "../../../../constants/urls";
+import { GET_NOTELIST } from "../../../../constants/actions";
+import { State, Action } from "../../interface/types";
+import { Notebook } from "../../interface/notebook";
+import { NoteListResponse } from "../../interface/note";
 
 export function getNoteList(param: any) {
   return (dispatch: Dispatch) => {

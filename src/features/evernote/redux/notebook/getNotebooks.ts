@@ -1,10 +1,13 @@
 import { Dispatch } from "redux";
-import { get } from "../../../utils/request";
-import { GET_NOTEBOOKS_URL, GET_NOTELIST_URL } from "../../../constants/urls";
-import { GET_NOTEBOOKS } from "../../../constants/actions";
-import { State, Action } from "../interface/types";
-import { Notebook } from "../interface/notebook";
-import { NoteInfo, NoteListRequest } from "../interface/note";
+import { get } from "../../../../utils/request";
+import {
+  GET_NOTEBOOKS_URL,
+  GET_NOTELIST_URL,
+} from "../../../../constants/urls";
+import { GET_NOTEBOOKS } from "../../../../constants/actions";
+import { State, Action } from "../../interface/types";
+import { Notebook } from "../../interface/notebook";
+import { NoteInfo, NoteListRequest } from "../../interface/note";
 
 export function getNotebooks(param: any) {
   return (dispatch: Dispatch) => {

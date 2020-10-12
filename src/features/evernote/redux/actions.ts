@@ -1,7 +1,7 @@
-export { getNotebooks } from "./getNotebooks";
-export { getNoteList } from "./getNoteList";
-export { getNote } from "./getNote";
-export { updateNote } from "./updateNote";
-export { createNote } from "./createNote";
-export { deleteNote } from "./deleteNote";
-export { updateNotebook } from "./updateNotebook";
+export { getNotebooks } from "./notebook/getNotebooks";
+export { getNoteList } from "./note/getNoteList";
+export { getNote } from "./note/getNote";
+export { updateNote } from "./note/updateNote";
+export { createNote } from "./note/createNote";
+export { deleteNote } from "./note/deleteNote";
+export { updateNotebook } from "./notebook/updateNotebook";

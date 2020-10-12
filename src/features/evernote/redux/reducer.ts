@@ -1,10 +1,10 @@
-import { reducer as getNotebooksReducer } from "./getNotebooks";
-import { reducer as getNoteListReducer } from "./getNoteList";
-import { reducer as getNoteReducer } from "./getNote";
-import { reducer as updateNoteReducer } from "./updateNote";
-import { reducer as createNoteReducer } from "./createNote";
-import { reducer as deleteNoteReducer } from "./deleteNote";
-import { reducer as updateNotebookReducer } from "./updateNotebook";
+import { reducer as getNotebooksReducer } from "./notebook/getNotebooks";
+import { reducer as getNoteListReducer } from "./note/getNoteList";
+import { reducer as getNoteReducer } from "./note/getNote";
+import { reducer as updateNoteReducer } from "./note/updateNote";
+import { reducer as createNoteReducer } from "./note/createNote";
+import { reducer as deleteNoteReducer } from "./note/deleteNote";
+import { reducer as updateNotebookReducer } from "./notebook/updateNotebook";
 import { State, Action } from "../interface/types";
 import {
   GET_NOTEBOOKS,

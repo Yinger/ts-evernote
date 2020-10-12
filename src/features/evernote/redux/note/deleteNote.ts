@@ -1,10 +1,10 @@
 import { Dispatch } from "redux";
 import _ from "lodash";
-import { NoteInfo } from "../interface/note";
-import { remove } from "../../../utils/request";
-import { DELETE_NOTE_URL } from "../../../constants/urls";
-import { DELETE_NOTE } from "../../../constants/actions";
-import { Action, State } from "../interface/types";
+import { NoteInfo } from "../../interface/note";
+import { remove } from "../../../../utils/request";
+import { DELETE_NOTE_URL } from "../../../../constants/urls";
+import { DELETE_NOTE } from "../../../../constants/actions";
+import { Action, State } from "../../interface/types";
 
 export function deleteNote(id: number) {
   return (dispatch: Dispatch) => {

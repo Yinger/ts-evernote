@@ -1,10 +1,10 @@
 import { Dispatch } from "redux";
 // import _ from "lodash";
-import { CreateNoteRequest, NoteInfo } from "../interface/note";
-import { post } from "../../../utils/request";
-import { CREATE_NOTE_URL } from "../../../constants/urls";
-import { CREATE_NOTE } from "../../../constants/actions";
-import { Action, State } from "../interface/types";
+import { CreateNoteRequest, NoteInfo } from "../../interface/note";
+import { post } from "../../../../utils/request";
+import { CREATE_NOTE_URL } from "../../../../constants/urls";
+import { CREATE_NOTE } from "../../../../constants/actions";
+import { Action, State } from "../../interface/types";
 
 export function createNote(param: CreateNoteRequest) {
   return (dispatch: Dispatch) => {

@@ -1,10 +1,10 @@
 import { Dispatch } from "redux";
 import _ from "lodash";
-import { NoteInfo, UpdateNoteRequest } from "../interface/note";
-import { put } from "../../../utils/request";
-import { UPDATE_NOTE_URL } from "../../../constants/urls";
-import { UPDATE_NOTE } from "../../../constants/actions";
-import { Action, State } from "../interface/types";
+import { NoteInfo, UpdateNoteRequest } from "../../interface/note";
+import { put } from "../../../../utils/request";
+import { UPDATE_NOTE_URL } from "../../../../constants/urls";
+import { UPDATE_NOTE } from "../../../../constants/actions";
+import { Action, State } from "../../interface/types";
 
 export function updateNote(param: UpdateNoteRequest) {
   return (dispatch: Dispatch) => {

@@ -1,10 +1,10 @@
 import { Dispatch } from "redux";
 import _ from "lodash";
-import { put } from "../../../utils/request";
-import { UPDATE_NOTEBOOK_URL } from "../../../constants/urls";
-import { UPDATE_NOTEBOOK } from "../../../constants/actions";
-import { Action, State } from "../interface/types";
-import { Notebook } from "../interface/notebook";
+import { put } from "../../../../utils/request";
+import { UPDATE_NOTEBOOK_URL } from "../../../../constants/urls";
+import { UPDATE_NOTEBOOK } from "../../../../constants/actions";
+import { Action, State } from "../../interface/types";
+import { Notebook } from "../../interface/notebook";
 
 export function updateNotebook(param: Notebook) {
   return (dispatch: Dispatch) => {
