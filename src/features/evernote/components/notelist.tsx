@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NoteListResponse, NoteInfo } from "../interface/note";
 import { Notebook } from "../interface/notebook";
 import cx from "classnames";
@@ -8,6 +8,7 @@ import withReactContent from "sweetalert2-react-content";
 interface Props {
   handleEditNote(id: number): void;
   onNoteDelete(id: number): void;
+  onNotebookEdit(param: Notebook): void;
   // onGetNote(id: number): void;
   noteList: NoteListResponse;
   currentNotebook: Notebook;
@@ -15,7 +16,15 @@ interface Props {
 }
 
 const NoteList = (props: Props) => {
+  const [bookName, setBookName] = useState("");
   const MySwal = withReactContent(Swal);
+  const handleNotebookNameChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setBookName(e.currentTarget.value);
+    let notebook = props.currentNotebook;
+    notebook.name = e.currentTarget.value;
+    props.onNotebookEdit(notebook);
+  };
+
   const handleDeleteNote = (id: number) => {
     MySwal.fire({
       title: "Are you sure?",
@@ -31,10 +40,22 @@ const NoteList = (props: Props) => {
     });
   };
 
+  useEffect(() => {
+    setBookName(
+      props.currentNotebook !== undefined ? props.currentNotebook.name : ""
+    );
+  }, [props.currentNotebook]);
+
   return (
     <div className="notes-panel">
       <div className="header">
-        {props.currentNotebook !== undefined ? props.currentNotebook.name : ""}
+        <input
+          type="text"
+          value={bookName !== undefined ? bookName : ""}
+          name="bookName"
+          onChange={handleNotebookNameChange}
+        />
+        {/* {props.currentNotebook !== undefined ? props.currentNotebook.name : ""} */}
       </div>
       <div className="body">
         <ul className="notes-list">

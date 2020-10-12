@@ -6,3 +6,5 @@ const targetUrl = "http://localhost:3030/";
 export const UPDATE_NOTE_URL = targetUrl + "notes";
 export const CREATE_NOTE_URL = targetUrl + "notes";
 export const DELETE_NOTE_URL = targetUrl + "notes";
+
+export const UPDATE_NOTEBOOK_URL = targetUrl + "notebooks";
