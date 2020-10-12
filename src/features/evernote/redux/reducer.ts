@@ -3,6 +3,7 @@ import { reducer as getNoteListReducer } from "./getNoteList";
 import { reducer as getNoteReducer } from "./getNote";
 import { reducer as updateNoteReducer } from "./updateNote";
 import { reducer as createNoteReducer } from "./createNote";
+import { reducer as deleteNoteReducer } from "./deleteNote";
 import { State, Action } from "../interface/types";
 import {
   GET_NOTEBOOKS,
@@ -10,6 +11,7 @@ import {
   GET_NOTE,
   UPDATE_NOTE,
   CREATE_NOTE,
+  DELETE_NOTE,
 } from "../../../constants/actions";
 
 const initialState: State = {
@@ -29,6 +31,8 @@ export default function reducer(state = initialState, action: Action) {
       return updateNoteReducer(state, action);
     case CREATE_NOTE:
       return createNoteReducer(state, action);
+    case DELETE_NOTE:
+      return deleteNoteReducer(state, action);
     default:
       return { ...state };
   }

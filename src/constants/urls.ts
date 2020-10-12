@@ -5,3 +5,4 @@ export const GET_NOTELIST_URL = "api/evernote/notes";
 const targetUrl = "http://localhost:3030/";
 export const UPDATE_NOTE_URL = targetUrl + "notes";
 export const CREATE_NOTE_URL = targetUrl + "notes";
+export const DELETE_NOTE_URL = targetUrl + "notes";

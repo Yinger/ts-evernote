@@ -10,7 +10,7 @@ axios.interceptors.response.use(
   },
   function (error) {
     return Promise.reject(error);
-  },
+  }
 );
 
 export function get(url: string, data: any) {
@@ -35,6 +35,15 @@ export function put(url: string, data: any) {
     method: "put",
     url,
     data,
+  });
+  // return axios.put(url, data);
+}
+
+export function remove(url: string) {
+  // console.log(data);
+  return axios({
+    method: "delete",
+    url,
   });
   // return axios.put(url, data);
 }

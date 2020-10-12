@@ -50,6 +50,7 @@ const Note = (props: Props) => {
             value={title !== undefined ? title : ""}
             name="title"
             onChange={handleTitleChange}
+            readOnly={props.note === undefined ? true : false}
           />
         </div>
       </div>
@@ -59,6 +60,7 @@ const Note = (props: Props) => {
             name="body"
             value={body !== undefined ? body : ""}
             onChange={handleBodyChange}
+            readOnly={props.note === undefined ? true : false}
           ></textarea>
         </div>
         <div className="preview markdown-body">
