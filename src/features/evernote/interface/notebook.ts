@@ -9,3 +9,7 @@ export interface NotebooksRequest {
   id?: number;
   name?: string;
 }
+
+export interface CreateNotebookRequest {
+  name: string;
+}

@@ -8,3 +8,4 @@ export const CREATE_NOTE_URL = targetUrl + "notes";
 export const DELETE_NOTE_URL = targetUrl + "notes";
 
 export const UPDATE_NOTEBOOK_URL = targetUrl + "notebooks";
+export const CREATE_NOTEBOOK_URL = targetUrl + "notebooks";
