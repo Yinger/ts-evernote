@@ -6,3 +6,4 @@ export { createNote } from "./note/createNote";
 export { deleteNote } from "./note/deleteNote";
 export { updateNotebook } from "./notebook/updateNotebook";
 export { createNotebook } from "./notebook/createNotebook";
+export { deleteNotebook } from "./notebook/deleteNotebook";

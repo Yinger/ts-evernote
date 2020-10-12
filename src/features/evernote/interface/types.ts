@@ -1,5 +1,5 @@
-import { NotebooksResponse } from "./notebook";
-import { NoteListResponse } from "./note";
+import { Notebook, NotebooksResponse } from "./notebook";
+import { NoteInfo, NoteListResponse } from "./note";
 
 export type Action = {
   type: string;
@@ -9,4 +9,6 @@ export type Action = {
 export type State = Readonly<{
   notebooks: NotebooksResponse;
   noteList: NoteListResponse;
+  currentNotebook: Notebook | undefined;
+  note: NoteInfo | undefined;
 }>;

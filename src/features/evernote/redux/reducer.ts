@@ -6,6 +6,7 @@ import { reducer as createNoteReducer } from "./note/createNote";
 import { reducer as deleteNoteReducer } from "./note/deleteNote";
 import { reducer as updateNotebookReducer } from "./notebook/updateNotebook";
 import { reducer as createNotebookReducer } from "./notebook/createNotebook";
+import { reducer as deleteNotebookReducer } from "./notebook/deleteNotebook";
 import { State, Action } from "../interface/types";
 import {
   GET_NOTEBOOKS,
@@ -16,11 +17,14 @@ import {
   DELETE_NOTE,
   UPDATE_NOTEBOOK,
   CREATE_NOTEBOOK,
+  DELETE_NOTEBOOK,
 } from "../../../constants/actions";
 
 const initialState: State = {
   notebooks: undefined,
   noteList: undefined,
+  currentNotebook: undefined,
+  note: undefined,
 };
 
 export default function reducer(state = initialState, action: Action) {
@@ -41,6 +45,8 @@ export default function reducer(state = initialState, action: Action) {
       return updateNotebookReducer(state, action);
     case CREATE_NOTEBOOK:
       return createNotebookReducer(state, action);
+    case DELETE_NOTEBOOK:
+      return deleteNotebookReducer(state, action);
     default:
       return { ...state };
   }

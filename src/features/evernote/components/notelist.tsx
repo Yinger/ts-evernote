@@ -3,6 +3,7 @@ import {
   NoteListResponse,
   NoteInfo,
   CreateNoteRequest,
+  NoteResponse,
 } from "../interface/note";
 import { Notebook } from "../interface/notebook";
 import cx from "classnames";
@@ -23,6 +24,9 @@ interface Props {
 
 const NoteList = (props: Props) => {
   const [bookName, setBookName] = useState("");
+  const [notelist, setNotelist] = useState<NoteInfo[]>([]);
+  const [selectedNote, setSelectedNote] = useState<NoteResponse>(undefined);
+  // const [notelist] = useState<NoteInfo[]>([]);
   const MySwal = withReactContent(Swal);
   const handleNotebookNameChange = (e: React.FormEvent<HTMLInputElement>) => {
     setBookName(e.currentTarget.value);
@@ -60,7 +64,9 @@ const NoteList = (props: Props) => {
     setBookName(
       props.currentNotebook !== undefined ? props.currentNotebook.name : ""
     );
-  }, [props.currentNotebook]);
+    setNotelist(props.noteList !== undefined ? props.noteList : []);
+    setSelectedNote(props.note);
+  }, [props.currentNotebook, props.noteList, props.note]);
 
   return (
     <div className="notes-panel">
@@ -86,13 +92,14 @@ const NoteList = (props: Props) => {
       </div>
       <div className="body">
         <ul className="notes-list">
-          {props.noteList !== undefined && props.noteList.length > 0
-            ? props.noteList.map((note: NoteInfo, index: number) => (
+          {notelist !== undefined && notelist.length > 0
+            ? notelist.map((note: NoteInfo, index: number) => (
                 <li key={note.id}>
                   <div
                     className={cx("note-brief", {
                       active:
-                        props.note !== undefined && props.note.id === note.id,
+                        selectedNote !== undefined &&
+                        selectedNote.id === note.id,
                     })}
                   >
                     <div

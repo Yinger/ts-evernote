@@ -19,6 +19,7 @@ import {
   deleteNote,
   updateNotebook,
   createNotebook,
+  deleteNotebook,
 } from "./redux/actions";
 import "./index.scss";
 import {
@@ -38,6 +39,12 @@ interface Props {
   onDeleteNote(id: number): void;
   onUpdateNotebook(param: Notebook): void;
   onCreateNotebook(param: CreateNotebookRequest): void;
+  onDeleteNotebook(
+    id: number,
+    defaultId: number,
+    isSelf: boolean,
+    noteId: number
+  ): void;
   notebooks: NotebooksResponse;
   currentNotebook: Notebook;
   noteList: NoteListResponse;
@@ -65,6 +72,8 @@ const Evernote = (props: Props) => {
         currentNotebook={props.currentNotebook}
         getNotebook={props.onGetNoteList}
         createNotebook={props.onCreateNotebook}
+        deleteNotebook={props.onDeleteNotebook}
+        note={props.note}
       />
       <NoteList
         noteList={props.noteList}
@@ -102,6 +111,7 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
       onDeleteNote: deleteNote,
       onUpdateNotebook: updateNotebook,
       onCreateNotebook: createNotebook,
+      onDeleteNotebook: deleteNotebook,
     },
     dispatch
   );
