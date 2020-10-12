@@ -76,6 +76,9 @@ const NoteList = (props: Props) => {
           type="text"
           value={bookName !== undefined ? bookName : ""}
           name="bookName"
+          readOnly={
+            bookName !== undefined && bookName === "默认笔记本" ? true : false
+          }
           onChange={handleNotebookNameChange}
         />
 
