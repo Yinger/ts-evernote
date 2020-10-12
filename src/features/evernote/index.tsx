@@ -61,7 +61,6 @@ const Evernote = (props: Props) => {
         notebooks={props.notebooks}
         currentNotebook={props.currentNotebook}
         getNotebook={props.onGetNoteList}
-        createNote={props.onCreateNote}
       />
       <NoteList
         noteList={props.noteList}
@@ -70,6 +69,7 @@ const Evernote = (props: Props) => {
         handleEditNote={props.onGetNote}
         onNoteDelete={props.onDeleteNote}
         onNotebookEdit={props.onUpdateNotebook}
+        createNote={props.onCreateNote}
       />
       <Note
         currentNotebook={props.currentNotebook}

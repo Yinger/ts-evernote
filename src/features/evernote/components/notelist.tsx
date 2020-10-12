@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { NoteListResponse, NoteInfo } from "../interface/note";
+import {
+  NoteListResponse,
+  NoteInfo,
+  CreateNoteRequest,
+} from "../interface/note";
 import { Notebook } from "../interface/notebook";
 import cx from "classnames";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import moment from "moment";
 
 interface Props {
   handleEditNote(id: number): void;
   onNoteDelete(id: number): void;
   onNotebookEdit(param: Notebook): void;
+  createNote(param: CreateNoteRequest): void;
   // onGetNote(id: number): void;
   noteList: NoteListResponse;
   currentNotebook: Notebook;
@@ -40,6 +46,16 @@ const NoteList = (props: Props) => {
     });
   };
 
+  const handleNoteCreate = () => {
+    let param: CreateNoteRequest = {
+      title: "新建笔记",
+      body: "",
+      datetime: moment().format("DD/MM/YYYY HH:mm:ss"),
+      bookId: props.currentNotebook.id,
+    };
+    props.createNote(param);
+  };
+
   useEffect(() => {
     setBookName(
       props.currentNotebook !== undefined ? props.currentNotebook.name : ""
@@ -49,12 +65,20 @@ const NoteList = (props: Props) => {
   return (
     <div className="notes-panel">
       <div className="header">
+        <div className="note-adder">
+          <button className="button adder" onClick={handleNoteCreate}>
+            <i className="iconfont icon-add"></i>
+            新建笔记
+          </button>
+        </div>
+
         <input
           type="text"
           value={bookName !== undefined ? bookName : ""}
           name="bookName"
           onChange={handleNotebookNameChange}
         />
+
         {/* {props.currentNotebook !== undefined ? props.currentNotebook.name : ""} */}
       </div>
       <div className="body">
