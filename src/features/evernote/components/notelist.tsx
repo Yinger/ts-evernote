@@ -50,7 +50,7 @@ const NoteList = (props: Props) => {
     let param: CreateNoteRequest = {
       title: "新建笔记",
       body: "",
-      datetime: moment().format("DD/MM/YYYY HH:mm:ss"),
+      datetime: moment().format("YYYY/MM/DD HH:mm:ss"),
       bookId: props.currentNotebook.id,
     };
     props.createNote(param);

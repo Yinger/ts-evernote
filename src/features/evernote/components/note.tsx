@@ -18,7 +18,7 @@ const Note = (props: Props) => {
     setTitle(e.currentTarget.value);
     let newnote = props.note;
     newnote.title = e.currentTarget.value;
-    newnote.datetime = moment().format("DD/MM/YYYY HH:mm:ss");
+    newnote.datetime = moment().format("YYYY/MM/DD HH:mm:ss");
     props.onChangeSave(newnote);
   };
 
@@ -26,7 +26,7 @@ const Note = (props: Props) => {
     setBody(e.currentTarget.value);
     let newnote = props.note;
     newnote.body = e.currentTarget.value;
-    newnote.datetime = moment().format("DD/MM/YYYY HH:mm:ss");
+    newnote.datetime = moment().format("YYYY/MM/DD HH:mm:ss");
     props.onChangeSave(newnote);
   };
 
